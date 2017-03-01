@@ -1,0 +1,101 @@
+<!-- Create a scoreboard page -->
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-10">
+        <div class="card">
+          <div class="header">
+            <h4 class="title">Create Scoreboard</h4>
+          </div>
+
+          <div class="content">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Scoreboard Name</label>
+                  <input type="text" class="form-control boardNameInput" placeholder="Board name" ng-model="scoreboardName" autofocus>
+                </div>
+                <button class="btn btn-info btn-fill boardNameButton" type="submit" ng-click="setScoreName()">Set name</button>
+              </div>
+            </div>
+            <div class="toggleDisable">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" class="form-control" placeholder="Person name" ng-model="personName">
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label>Wins</label>
+                    <input type="text" class="form-control" placeholder="Wins" ng-model="personWins">
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label>Losses</label>
+                    <input type="text" class="form-control" placeholder="Losses" ng-model="personLosses">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <button class="btn btn-info btn-fill" ng-click="addPerson()">Add to list</button>
+                  </div>
+                </div>
+              </div>
+
+			<!-- Preview scoreboard elements by printing them out in browser -->
+              <div class="row">
+                <div class="col-md-12">
+                  <h4>Preview Scoreboard: <strong>{{ peopleList.boardName }}</strong></h4>
+                  <table class="table table-hover table-striped">
+                    <thead>
+                      <th>Name</th>
+                      <th>Wins</th>
+                      <th>Losses</th>
+                      <th>Action</th>
+                    </thead>
+                    <tbody>
+                      <tr ng-repeat="person in peopleList.person">
+                        <td>{{ person.name }}</td>
+                        <td>{{ person.wins }}</td>
+                        <td>{{ person.losses }}</td>
+                        <td><button class="btn btn-danger btn-xs btn-fill" type="submit" ng-click="deletePerson($index)">Delete</button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <button class="btn btn-success btn-fill toggleDisable" type="submit" ng-click="createScoreboard()">Create scoreboard</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" tabindex="-1" role="dialog" id="createModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Create Scoreboard</h4>
+      </div>
+      <div class="modal-body">
+        <p>{{ createResult }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success btn-fill" data-dismiss="modal">Okay</button>
+      </div>
+    </div>
+  </div>
+</div>

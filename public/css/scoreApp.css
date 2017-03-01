@@ -1,0 +1,30 @@
+/* Page layout */
+.content {
+  padding: 30px 15px;
+}
+
+.toggleDisable {
+  display: none;
+}
+
+/* Styles for the first, second and third place in the highscore table */
+.fa-trophy {
+  display: none;
+  padding-right: 7px;
+}
+
+.gold, .silver, .bronze {
+  display: inline
+}
+
+.gold {
+  color: #e5c100
+}
+
+.silver {
+  color: silver;
+}
+
+.bronze {
+  color: #cd7f32
+}

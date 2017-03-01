@@ -1,0 +1,13 @@
+{
+	"name": "ScoreboardApp",
+	"version": "1.0.0",
+	"description": "Scoreboard creation application.",
+	"main": "server.js",
+	"author": "Andreas&Marcus&Josef",
+	"dependencies": {
+		"body-parser": "^1.4.3",
+		"express": "^4.13.4",
+		"method-override": "^2.1.3",
+		"mongoose": "4.1.9"
+	}
+}

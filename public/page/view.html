@@ -1,0 +1,85 @@
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="header">
+            <h4 class="title">Viewing Scoreboard: <strong>{{ data.boardName }}</strong></h4>
+            <p class="category">This is where you can view a specific scoreboard.</p>
+          </div>
+
+          <div class="content">
+            <a href="#/scoreboards/{{data._id}}/edit"><button class="btn btn-warning btn-fill" type="submit">Edit scoreboard</button></a>
+            <button class="btn btn-danger btn-fill" type="submit" ng-click="verifyDelete()">Delete scoreboard</button>
+
+            <table class="table table-hover table-striped">
+              <thead>
+                <th>
+                  <span ng-click="sortType = 'name'; sortReverse = !sortReverse">
+                    Name
+                  <span ng-show="sortType == 'name' && sortReverse" class="glyphicon glyphicon-circle-arrow-up"></span>
+                  <span ng-show="sortType == 'name' && !sortReverse" class="glyphicon glyphicon-circle-arrow-down"></span>
+                </th>
+                <th>
+                  <span ng-click="sortType = 'wins'; sortReverse = !sortReverse">
+                    Wins
+                  <span ng-show="sortType == 'wins' && sortReverse" class="glyphicon glyphicon-circle-arrow-up"></span>
+                  <span ng-show="sortType == 'wins' && !sortReverse" class="glyphicon glyphicon-circle-arrow-down"></span>
+                </th>
+                <th>
+                  <span ng-click="sortType = 'losses'; sortReverse = !sortReverse">
+                    Losses
+                  <span ng-show="sortType == 'losses' && sortReverse" class="glyphicon glyphicon-circle-arrow-up"></span>
+                  <span ng-show="sortType == 'losses' && !sortReverse" class="glyphicon glyphicon-circle-arrow-down"></span>
+                </th>
+              </thead>
+              <tbody>
+                <tr ng-repeat="person in data.person | orderBy:'-wins' | orderBy:sortType:sortReverse">
+                  <td><i class="fa fa-trophy" ng-class="{gold : $index === 0,  silver : $index === 1, bronze : $index === 2}"></i> {{ person.name }}</td>
+                  <td>{{ person.wins }}</td>
+                  <td>{{ person.losses }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modals -->
+<div class="modal fade" tabindex="-1" role="dialog" id="verifyModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Delete Scoreboard</h4>
+      </div>
+      <div class="modal-body">
+        <p>Do you really want to delete the scoreboard?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info btn-fill" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-danger btn-fill" data-dismiss="modal" ng-click="deleteScoreboard()">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="deletedModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Delete Scoreboard</h4>
+      </div>
+      <div class="modal-body">
+        <p>{{ deleteResult }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success btn-fill" data-dismiss="modal">Okay</button>
+      </div>
+    </div>
+  </div>
+</div>
