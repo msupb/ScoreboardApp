@@ -5,6 +5,4 @@ The purpose of this application is to allow the user to generate and manage scor
 Below you will find a complete tutorial to get the application up and running.
 
 # Tutorial
-1. hej
-2. hejsan
-3. Hello
+
