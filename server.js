@@ -1,5 +1,3 @@
-// Josef Haji Karimian, Marcus Eriksson, Andreas Kanfors
-
 // Server files and all CRUD-operations for scoreApp
 // Get dependencies
 var express = require('express');
